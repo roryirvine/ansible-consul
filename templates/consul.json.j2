@@ -3,7 +3,7 @@
   "ui_dir": "{{ consul_home }}/dist",
 {% endif %}
 {% if consul_join_at_start is defined and consul_join_at_start %}
-  "start_join": {{ consul_servers|to_nice_json }},
+"start_join": [ {% for server in groups['tag_Class_config'] if hostvars[server]['ec2_tag_Env'] == env %}"{{ hostvars[server]['ec2_private_ip_address'] }}"{% if not loop.last %},{% endif %}{% endfor %} ],
 {% endif %}
 {% if consul_disable_remote_exec is defined and consul_disable_remote_exec %}
   "disable_remote_exec": {{ "true" if consul_disable_remote_exec else "false" }},
