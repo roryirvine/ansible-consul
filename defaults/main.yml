@@ -1,7 +1,7 @@
 ---
-consul_version: 0.5.2
-consul_archive: "{{ consul_version }}_linux_amd64.zip"
-consul_download: "https://dl.bintray.com/mitchellh/consul/{{ consul_archive }}"
+consul_version: 0.6.0
+consul_archive: "consul_{{ consul_version }}_linux_amd64.zip"
+consul_download: "https://releases.hashicorp.com/consul/{{ consul_version }}/{{ consul_archive }}"
 consul_download_username: ""
 consul_download_password: ""
 consul_download_folder: /tmp
@@ -43,7 +43,7 @@ consul_servers: ['127.0.0.1']
 consul_log_level: "INFO"
 consul_syslog: false
 consul_rejoin_after_leave: true
-consul_leave_on_terminate: false
+consul_leave_on_terminate: true
 consul_join_at_start: false
 
 consul_bind_address: "0.0.0.0"
@@ -66,3 +66,5 @@ consul_install_dnsmasq: false
 consul_install_consulate: false
 
 consul_node_name: "{{ inventory_hostname }}"
+
+consul_acl_default_policy: allow
