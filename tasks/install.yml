@@ -165,8 +165,14 @@
     group={{consul_group}}
     mode=0755
 
+- name: ensure that consul is started
+  service:
+    name: consul
+    state: started
+    enabled: yes
+
 - name: restart consul
   service:
     name: consul
     state: restarted
-    enabled: yes
+
